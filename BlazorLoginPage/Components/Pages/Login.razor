@@ -1,0 +1,42 @@
+﻿```razor
+@page "/"
+@rendermode InteractiveServer
+
+@using BlazorLoginPage.Services
+
+@inject NavigationManager Navigation
+@inject LoginState LoginState
+
+<h1>Login</h1>
+
+<div>
+    <label>Username</label>
+    <input type="text" @bind="Username" />
+
+    <br />
+    <br />
+
+    <label>Password</label>
+    <input type="password" @bind="Password" />
+
+    <br />
+    <br />
+
+    <button @onclick="LoginUser">Login</button>
+</div>
+
+@code {
+    private string Username { get; set; } = "";
+    private string Password { get; set; } = "";
+
+    private void LoginUser()
+    {
+        if (Username == "admin" && Password == "1234")
+        {
+            LoginState.IsLoggedIn = true;
+
+            Navigation.NavigateTo("/dashboard", replace: true);
+        }
+    }
+}
+```

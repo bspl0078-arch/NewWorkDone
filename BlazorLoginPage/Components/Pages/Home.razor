@@ -1,0 +1,23 @@
+﻿```razor
+@page "/dashboard"
+@rendermode InteractiveServer
+
+@using BlazorLoginPage.Components.Layout
+@using BlazorLoginPage.Services
+
+@layout MainLayout
+
+@inject LoginState LoginState
+@inject NavigationManager Navigation
+
+@if (LoginState.IsLoggedIn)
+{
+    <h1>Dashboard</h1>
+
+    <p>Welcome inside the application.</p>
+}
+else
+{
+    Navigation.NavigateTo("/");
+}
+```
